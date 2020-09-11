@@ -14,6 +14,7 @@ export class LogInComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: string;
   submitted = false;
+  loginFailed = false;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -48,6 +49,8 @@ export class LogInComponent implements OnInit {
         () => {
           const returnUrl = this.returnUrl ? this.returnUrl : '/clients';
           this.router.navigate([returnUrl]);
-        });
+        }, (() => {
+          this.loginFailed = true;
+        }));
   }
 }
