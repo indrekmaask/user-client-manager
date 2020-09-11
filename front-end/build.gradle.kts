@@ -18,6 +18,6 @@ tasks.register<NpxTask>("npmBuild") {
 tasks.jar {
   enabled = true
   dependsOn("npmBuild")
-  from("dist/ucm-ui")
+  from("dist/ucm")
   into("static")
 }

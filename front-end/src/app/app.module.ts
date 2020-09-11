@@ -20,7 +20,7 @@ import { ClientsModule } from './clients/clients.module';
         tokenGetter: () => {
           return localStorage.getItem('access_token');
         },
-        whitelistedDomains: ['localhost:8080']
+        allowedDomains: ['localhost:8080']
       }
     })
   ],
