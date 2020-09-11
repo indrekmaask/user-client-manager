@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/sequence/01-hibernate_sequence.xml
+  - include:
+      file: db/changelog/table/01-country.xml
+  - include:
+      file: db/changelog/table/02-user.xml
+  - include:
+      file: db/changelog/table/03-client.xml

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Clients</h2>
+  </div>
+
+  <div class="row">
+    <a routerLink="new" class="btn btn-primary">Add client</a>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Username</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of clients; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{client.firstName}}</td>
+        <td>{{client.lastName}}</td>
+        <td>{{client.userName}}</td>
+        <td>
+          <a [routerLink]="[client.id]" class="btn btn-primary">Edit client</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

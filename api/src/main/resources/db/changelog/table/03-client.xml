@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="03-client.xml">
+
+  <changeSet id="create_client_table" author="indrek">
+    <createTable tableName="client">
+      <column name="id" type="uuid" defaultValueComputed="random_uuid()">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="user_id" type="uuid">
+        <constraints references="user(id)" foreignKeyName="fk_client_user" nullable="false"/>
+      </column>
+      <column name="first_name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="username" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="email" type="varchar(50)"/>
+      <column name="address" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="country_code" type="varchar(2)">
+        <constraints nullable="false" references="country(code)" foreignKeyName="fk_client_country"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="add_default_clients" author="indrek">
+    <insert tableName="client">
+      <column name="user_id" valueComputed="SELECT id FROM user WHERE username = 'user1'"/>
+      <column name="first_name" value="Oskar"/>
+      <column name="last_name" value="Ohakas"/>
+      <column name="username" value="oooohakass"/>
+      <column name="email" value="oskar.ohakas@mail.ee"/>
+      <column name="address" value="Kodu"/>
+      <column name="country_code" value="EE"/>
+    </insert>
+
+    <insert tableName="client">
+      <column name="user_id" valueComputed="SELECT id FROM user WHERE username = 'user2'"/>
+      <column name="first_name" value="Mari"/>
+      <column name="last_name" value="Maasikas"/>
+      <column name="username" value="mammu"/>
+      <column name="email" value="mari.maasikas@mail.ee"/>
+      <column name="address" value="Peenar"/>
+      <column name="country_code" value="EE"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

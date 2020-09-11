@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>{{this.new ? 'Add Client' : 'Edit Client'}}</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row">
+
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="" value=""
+                   required>
+            <span *ngIf="firstName.hasError('required') && (firstName.touched || firstName.dirty)"
+                  class="danger" style="color: red">
+                Field is required
+            </span>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="" value=""
+                   required>
+            <span *ngIf="lastName.hasError('required') && (lastName.touched || lastName.dirty)"
+                  class="danger" style="color: red">
+                Field is required
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="userName">Username</label>
+          <input formControlName="userName" type="text" class="form-control" id="userName" placeholder="" value=""
+                 required>
+          <span *ngIf="userName.hasError('required') && (userName.touched || userName.dirty)"
+                class="danger" style="color: red">
+                Field is required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="you@example.com"
+                 email>
+          <span *ngIf="email.hasError('email') && (email.touched || email.dirty)"
+                class="danger" style="color: red">
+                Invalid email
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input formControlName="address" type="text" class="form-control" id="address" placeholder="1234 Main St"
+                 required>
+          <span *ngIf="address.hasError('required')
+                && (address.touched || address.dirty)" class="danger" style="color: red">
+                Field is required
+            </span>
+        </div>
+
+        <div class="mb-3">
+          <label for="countryCode">Country</label>
+          <select formControlName="countryCode" class="custom-select d-block w-100" id="countryCode" required>
+            <option value="">Choose...</option>
+            <option *ngFor="let country of countries" value="{{country.code}}">{{country.name}}</option>
+          </select>
+          <span *ngIf="countryCode.hasError('required')
+                && (countryCode.touched || countryCode.dirty)" class="danger" style="color: red">
+                Field is required
+            </span>
+        </div>
+        <hr class="mb-4">
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

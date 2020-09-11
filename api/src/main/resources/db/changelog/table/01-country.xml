@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="01-country.xml">
+
+  <changeSet id="create_table_country" author="indrek">
+    <createTable tableName="country">
+      <column name="code" type="varchar(2)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="add_default_countries" author="indrek">
+    <insert tableName="country">
+      <column name="code" value="EE"/>
+      <column name="name" value="Estonia"/>
+    </insert>
+    <insert tableName="country">
+      <column name="code" value="LV"/>
+      <column name="name" value="Latvia"/>
+    </insert>
+    <insert tableName="country">
+      <column name="code" value="LT"/>
+      <column name="name" value="Lithuania"/>
+    </insert>
+    <insert tableName="country">
+      <column name="code" value="FI"/>
+      <column name="name" value="Finland"/>
+    </insert>
+    <insert tableName="country">
+      <column name="code" value="SE"/>
+      <column name="name" value="Sweden"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

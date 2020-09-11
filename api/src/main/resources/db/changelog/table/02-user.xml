@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="02-user.xml">
+
+  <changeSet id="create_user_table" author="indrek">
+    <createTable tableName="user">
+      <column name="id" type="uuid" defaultValueComputed="random_uuid()">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="username" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="add_default_users" author="indrek">
+    <insert tableName="user">
+      <column name="username" value="user1"/>
+      <column name="password" value="$2y$12$IOfLzOO21KH7V.pucPoYe.jTLt/SPDIBwUYv8VkO29y.fBYokUOxW"/>
+    </insert>
+    <insert tableName="user">
+      <column name="username" value="user2"/>
+      <column name="password" value="$2y$12$ZynJ9hTYZ4eA610LlQ4vvOmKiD2D0ANKR6A1hW9E5iPe74k1BjSgm"/>
+    </insert>
+    <insert tableName="user">
+      <column name="username" value="user3"/>
+      <column name="password" value="$2y$12$yqbNk0tJlfxEZrwAAl5Qi.Chc/3XYIdlSUSKCshr61lwjRs0pyDbG"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>
