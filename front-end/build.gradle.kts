@@ -1,3 +1,4 @@
+import com.github.gradle.node.npm.task.NpmInstallTask
 import com.github.gradle.node.npm.task.NpxTask
 
 plugins {
@@ -11,6 +12,7 @@ node {
 }
 
 tasks.register<NpxTask>("npmBuild") {
+  dependsOn(tasks.withType<NpmInstallTask>())
   command.set("ng")
   args.addAll(listOf("build"))
 }
