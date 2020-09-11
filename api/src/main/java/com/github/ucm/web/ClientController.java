@@ -50,7 +50,7 @@ class ClientController {
   }
 
   @PutMapping("{clientId}")
-  public ResponseEntity<Client> updateClient(@RequestBody ClientDetails clientDetails,
+  public ResponseEntity<Client> updateClient(@RequestBody @Valid ClientDetails clientDetails,
                                              @PathVariable String clientId,
                                              @AuthenticationPrincipal UserPrincipal principal) {
 
